@@ -49,6 +49,6 @@ fi
 for i in ${NODES[@]}; do
   echo "Enabling ssh access without password for: $i"
   # Provide ssh key through sshpass
-  sshpass -f "12345" ssh-copy-id -i "$RSA_PATH.pub" $MININET_USER@$i
+  sshpass -p root ssh-copy-id -i "$RSA_PATH.pub" $MININET_USER@$i
 done
 echo -e "\n"
