@@ -40,6 +40,7 @@ if [ "$RSA_PATH" = "" ]; then
 fi
 # Let's add the key to the ssh-agent
 if [ "$GENERATED" -eq 1 ]; then
+  echo -e "adding the key to the ssh-agent"
   eval $(ssh-agent)
   ssh-add -D
   ssh-add "$RSA_PATH"
