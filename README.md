@@ -1,29 +1,24 @@
 # SRv6 Management Tools #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Tools to setup an emulated SRv6 capapable IPv6 networks (based on mininet)
 
-### What is this repository for? ###
+### Download the VM ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+A Xubuntu 17.04 virtualbox VM can be downloaded using Vagrant. First, you have to install vagrant from https://www.vagrantup.com/ 
+then you can get your ready-to-go VM as follows: 
 
-### How do I get set up? ###
+create a new folder, for example call it srv6, enter in the new folder and copy the Vagrantfile then you can simply run
+> vagrant up
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+the VM will be downloaded from https://app.vagrantup.com/salsano/boxes/test
 
-### Contribution guidelines ###
+### Configure the VM ###
 
-* Writing tests
-* Code review
-* Other guidelines
+the password for user is 1234
+the password for root is root
 
-### Who do I talk to? ###
+  cd /home/user/workspace/srv6-mantoo
 
-* Repo owner or admin
-* Other community or team contact
+
+### Run an example experiment ###
+
