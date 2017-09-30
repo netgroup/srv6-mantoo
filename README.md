@@ -33,8 +33,11 @@ the password for root is root
     > ./start.sh
 
 now you have started the topology defined in the file abilene.py, open another terminal and execute
+
     > cat /home/user/workspace/srv6-mantoo/deployment/nodes.sh
+
 it will show a list of mininet VMs on which you can login, for example
+
     > ssh root@2000::d
 
     
