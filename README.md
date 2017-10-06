@@ -64,7 +64,9 @@ You can login on any router or host using their management IP, for example login
     # ping -6 2001:0000:0000:000d:0000:0000:0000:0002
     # traceroute -6 2001:0000:0000:000d:0000:0000:0000:0002
     
-    
+Now you can add SRv6 policies :
+
+    # documentation in progres... please wait :-)
     
     
 
