@@ -14,16 +14,17 @@ then you can get your ready-to-go VM as follows:
 
 (the VM will be downloaded from https://app.vagrantup.com/salsano/boxes/test)
 
+the password for user is 1234
+
+the password for root is root
+
 ### Configure the VM ###
 
-the password for user is 1234
-the password for root is root
+This will be used to login as root in all mininet VMs without password:
 
     > cd /home/user/workspace/srv6-mantoo
     > cd deployment
     > ./setup-passwordless-ssh-root-login.sh
-
-(this will be used to login as root in all mininet VMs without password)
 
 ### Run an example experiment ###
 
