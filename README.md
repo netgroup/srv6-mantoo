@@ -33,13 +33,40 @@ This will be used to login as root in all mininet VMs without password:
     > cd mininet
     > ./start.sh
 
-now you have started the topology defined in the file abilene.py, open another terminal and execute
+now you have started the topology defined in the file abilene.py (11 routers and 11 servers):
 
-    > cat /home/user/workspace/srv6-mantoo/deployment/nodes.sh
+    # Define the switches representing the cities
+    routers = ['nyc', 'chi', 'wdc', 'sea', 'sun', 'lan', 'den', 'kan', 'hou', 'atl', 'ind']
 
-it will show a list of mininet VMs on which you can login, for example
+    # Define the hosts representing the cities
+    hosts = ['hnyc', 'hchi', 'hwdc', 'hsea', 'hsun', 'hlan', 'hden', 'hkan', 'hhou', 'hatl', 'hind']
 
-    > ssh root@2000::d
+The file topology.json in the deployment folder provides the topology with IPv6 addresses: 
+
+    > cat /home/user/workspace/srv6-mantoo/deployment/topology.json
+
+for example:
+
+    "id": "chi", "mgmtip": "2000::2/64"
+    "id": "den", "mgmtip": "2000::7/64"
+    "id": "hden", "mgmtip": "2000::12/64", 
+
+    "chi-eth1" : "2001:0000:0000:0012:0000:0000:0000:0002/64"
+    "den-eth0" : "2001:0000:0000:000d:0000:0000:0000:0001/64"
+    "hden-eth0" : "2001:0000:0000:000d:0000:0000:0000:0002/64"
+
+You can login on any router or host using their management IP, for example login in the chi router and ping/traceroute the den router or the den host :
+
+    > ssh root@2000::2
+    # ping -6 2001:0000:0000:000d:0000:0000:0000:0001
+    # traceroute -6 2001:0000:0000:000d:0000:0000:0000:0001
+
+    # ping -6 2001:0000:0000:000d:0000:0000:0000:0002
+    # traceroute -6 2001:0000:0000:000d:0000:0000:0000:0002
+    
+    
+    
+    
 
     
 
