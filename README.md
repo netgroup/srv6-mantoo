@@ -83,7 +83,7 @@ You can login on any router or host using their management IP, for example login
     > 64 bytes from 2001:0:0:d::2: icmp_seq=2 ttl=59 time=0.170 ms
     > 64 bytes from 2001:0:0:d::2: icmp_seq=3 ttl=59 time=0.166 ms
 
-    # Traceroute denverm host 2001:0:0:d::2
+    # Traceroute denver host 2001:0:0:d::2
     > traceroute -6 2001:0:0:d::2
     > traceroute to 2001:0:0:d::2 (2001:0:0:d::2), 30 hops max, 80 byte packets
     > 1  2001:0:0:7::1 (2001:0:0:7::1)  0.059 ms  0.015 ms  0.012 ms
