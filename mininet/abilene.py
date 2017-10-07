@@ -27,6 +27,7 @@ from collections import defaultdict
 
 # IPaddress dependency
 from ipaddress import IPv6Network
+import ipaddress
 
 # Mininet
 from mininet.log import setLogLevel
@@ -44,6 +45,7 @@ from routing import SPFRouting
 import os
 import json
 import sys
+
 
 import networkx as nx
 
@@ -281,14 +283,26 @@ def dump():
     # Get json topology
     json_topology = json_graph.node_link_data(topology)
     # Convert links
+
+    # for link in json_topology['links'] :
+    # 	#print link
+    # 	addr6 = ipaddress.ip_interface(link['lhs_ip'])
+    # 	print addr6.ip
+
+    # 	#addr6 = 
+    #	print str((ipaddress.ip_interface(link['lhs_ip'])).ip)
+
+
     json_topology['links'] = [
         {
             'source': json_topology['nodes'][link['source']]['id'],
             'target': json_topology['nodes'][link['target']]['id'],
             'lhs_intf': link['lhs_intf'],
             'rhs_intf': link['rhs_intf'],
-            'lhs_ip': link['lhs_ip'],
-            'rhs_ip': link['rhs_ip']
+#            'lhs_ip': link['lhs_ip'],
+			'lhs_ip': str((ipaddress.ip_interface(link['lhs_ip'])).ip),
+#            'rhs_ip': link['rhs_ip']
+			'rhs_ip': str((ipaddress.ip_interface(link['rhs_ip'])).ip)
         }
         for link in json_topology['links']]
     # Dump the topology
