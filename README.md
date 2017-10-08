@@ -51,9 +51,9 @@ for example:
     "id": "den", "mgmtip": "2000::7/64"
     "id": "hden", "mgmtip": "2000::12/64", 
 
-    "chi-eth1" : "2001:0000:0000:0012:0000:0000:0000:0002/64"
-    "den-eth0" : "2001:0000:0000:000d:0000:0000:0000:0001/64"
-    "hden-eth0" : "2001:0000:0000:000d:0000:0000:0000:0002/64"
+    "chi-eth1" : "2001:0:0:12::2/64"
+    "den-eth0" : "2001:0:0:d::1/64"
+    "hden-eth0" : "2001:0:0:d::2/64"
 
 You can login on any router or host using their management IP, for example login in the chi router and ping/traceroute the den router or the den host :
 
