@@ -288,14 +288,14 @@ class Abilene(Topo):
 	      # Create a link between mgmt switch and the router
 	      self.addLink(router, br_mgmt, **linkopts )
 	      portNumber = self.port(router, br_mgmt)
-	      print portNumber
+	      #print portNumber
 
 	    # Connect all the hosts to the management network
 	    for host in hosts:
 	      # Create a link between mgmt switch and the host
 	      self.addLink(host, br_mgmt, **linkopts )
 	      portNumber = self.port(host, br_mgmt)
-	      print portNumber
+	      #print portNumber
 
 
 # Utility function to dump relevant information of the emulation
