@@ -51,8 +51,6 @@ import networkx as nx
 
 from networkx.readwrite import json_graph
 
-BEFORE = True
-
 # Mapping host to vnfs
 nodes_to_vnfs         = defaultdict(list)
 # Mapping node to management address
@@ -197,18 +195,17 @@ class Abilene(Topo):
     hosts.append(mgmt)
 
 
-    if (BEFORE):
-	    # Connect all the routers to the management network
-	    for router in routers:
-	      # Create a link between mgmt switch and the router
-	      self.addLink(router, br_mgmt, **linkopts )
-	      portNumber = self.port(router, br_mgmt)
+    # Connect all the routers to the management network
+    for router in routers:
+      # Create a link between mgmt switch and the router
+      self.addLink(router, br_mgmt, **linkopts )
+      portNumber = self.port(router, br_mgmt)
 
-	    # Connect all the hosts to the management network
-	    for host in hosts:
-	      # Create a link between mgmt switch and the host
-	      self.addLink(host, br_mgmt, **linkopts )
-	      portNumber = self.port(host, br_mgmt)
+    # Connect all the hosts/servers to the management network
+    for host in hosts:
+      # Create a link between mgmt switch and the host
+      self.addLink(host, br_mgmt, **linkopts )
+      portNumber = self.port(host, br_mgmt)
 
     # Iterate over the edge links and generate them
     for edge_link in edge_links:
@@ -281,21 +278,6 @@ class Abilene(Topo):
       subnets_to_via[str(net.exploded)].append(lhs)
       # Map subnet to rhs
       subnets_to_via[str(net.exploded)].append(rhs)
-
-    if (not BEFORE):
-	    # Connect all the routers to the management network
-	    for router in routers:
-	      # Create a link between mgmt switch and the router
-	      self.addLink(router, br_mgmt, **linkopts )
-	      portNumber = self.port(router, br_mgmt)
-	      #print portNumber
-
-	    # Connect all the hosts to the management network
-	    for host in hosts:
-	      # Create a link between mgmt switch and the host
-	      self.addLink(host, br_mgmt, **linkopts )
-	      portNumber = self.port(host, br_mgmt)
-	      #print portNumber
 
 
 # Utility function to dump relevant information of the emulation

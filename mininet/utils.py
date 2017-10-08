@@ -31,7 +31,8 @@ import re
 class IPHost(Host):
 
   def __init__(self, name, *args, **kwargs):
-    Host.__init__(self, name, *args, **kwargs)
+    dirs = ['/var/mininet']
+    Host.__init__(self, name, privateDirs=dirs, *args, **kwargs)
 
   def config(self, **kwargs):
     # Init steps
@@ -45,6 +46,9 @@ class IPHost(Host):
       if first:
         first = False
         self.cmd('ip a a %s dev %s' %(kwargs['mgmtip'], intf.name))
+
+    #let's write the hostname in /var/mininet/hostname
+    self.cmd("echo '" + self.name + "' > /var/mininet/hostname")
 
     #self.cmd('ip a a %s dev %s' %(kwargs['mgmtip'], intf.name))
 
