@@ -38,10 +38,10 @@ the password for root is root
 
 now you have started the topology defined in the file abilene.py (11 routers and 11 servers):
 
-    # Define the switches representing the cities
+    # Define the routers representing the cities
     routers = ['nyc', 'chi', 'wdc', 'sea', 'sun', 'lan', 'den', 'kan', 'hou', 'atl', 'ind']
 
-    # Define the hosts representing the cities
+    # Define the servers representing the cities
     hosts = ['hnyc', 'hchi', 'hwdc', 'hsea', 'hsun', 'hlan', 'hden', 'hkan', 'hhou', 'hatl', 'hind']
 
 The file topology.json in the deployment folder provides the topology with IPv6 addresses: 
@@ -54,11 +54,12 @@ for example:
     "id": "den", "mgmtip": "2000::7/64"
     "id": "hden", "mgmtip": "2000::12/64", 
 
-    "chi-eth1" : "2001:0:0:12::2/64"
-    "den-eth0" : "2001:0:0:d::1/64"
-    "hden-eth0" : "2001:0:0:d::2/64"
+    "chi-eth2" : "2001:0:0:12::2/64"
+    "den-eth1" : "2001:0:0:d::1/64"
+    "hden-eth1" : "2001:0:0:d::2/64"
 
-You can login on any router or host using their management IP, for example login in the chi router and ping/traceroute the den router or the den host :
+Each router and server has a management interface eth0 connected "out of band" with the host running mininet. 
+You can login on any router or server using their management IP, for example login in the chi router and ping/traceroute the den router or the den host :
 
     # Connect to the node hync
     > ssh root@2000::c
