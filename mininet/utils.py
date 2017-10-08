@@ -37,11 +37,17 @@ class IPHost(Host):
     # Init steps
     Host.config(self, **kwargs)
     # Iterate over the interfaces
+    first = True
     for intf in self.intfs.itervalues():
       # Remove any configured address
       self.cmd('ifconfig %s 0' %intf.name)
-    # For the last one, let's configure the mgmt address
-    self.cmd('ip a a %s dev %s' %(kwargs['mgmtip'], intf.name))
+      # For the first one, let's configure the mgmt address
+      if first:
+        first = False
+        self.cmd('ip a a %s dev %s' %(kwargs['mgmtip'], intf.name))
+
+    #self.cmd('ip a a %s dev %s' %(kwargs['mgmtip'], intf.name))
+
     # If requested
     if kwargs['sshd']:
       # Let's start sshd daemon in the hosts

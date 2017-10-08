@@ -51,6 +51,8 @@ import networkx as nx
 
 from networkx.readwrite import json_graph
 
+BEFORE = True
+
 # Mapping host to vnfs
 nodes_to_vnfs         = defaultdict(list)
 # Mapping node to management address
@@ -106,7 +108,7 @@ class Abilene(Topo):
     # Define the switches representing the cities
     routers = ['nyc', 'chi', 'wdc', 'sea', 'sun', 'lan', 'den', 'kan', 'hou', 'atl', 'ind']
 
-    # Define the hosts representing the cities
+    # Define the host/servers representing the cities
     hosts = ['hnyc', 'hchi', 'hwdc', 'hsea', 'hsun', 'hlan', 'hden', 'hkan', 'hhou', 'hatl', 'hind']
 
     # Define the edge links connecting hosts and switches
@@ -194,6 +196,20 @@ class Abilene(Topo):
     # Store mgmt in hosts
     hosts.append(mgmt)
 
+
+    if (BEFORE):
+	    # Connect all the routers to the management network
+	    for router in routers:
+	      # Create a link between mgmt switch and the router
+	      self.addLink(router, br_mgmt, **linkopts )
+	      portNumber = self.port(router, br_mgmt)
+
+	    # Connect all the hosts to the management network
+	    for host in hosts:
+	      # Create a link between mgmt switch and the host
+	      self.addLink(host, br_mgmt, **linkopts )
+	      portNumber = self.port(host, br_mgmt)
+
     # Iterate over the edge links and generate them
     for edge_link in edge_links:
       # The router is the left hand side of the pair
@@ -266,15 +282,21 @@ class Abilene(Topo):
       # Map subnet to rhs
       subnets_to_via[str(net.exploded)].append(rhs)
 
-    # Connect all the routers to the management network
-    for router in routers:
-      # Create a link between mgmt switch and the router
-      self.addLink(router, br_mgmt, **linkopts )
+    if (not BEFORE):
+	    # Connect all the routers to the management network
+	    for router in routers:
+	      # Create a link between mgmt switch and the router
+	      self.addLink(router, br_mgmt, **linkopts )
+	      portNumber = self.port(router, br_mgmt)
+	      print portNumber
 
-    # Connect all the hosts to the management network
-    for host in hosts:
-      # Create a link between mgmt switch and the host
-      self.addLink(host, br_mgmt, **linkopts )
+	    # Connect all the hosts to the management network
+	    for host in hosts:
+	      # Create a link between mgmt switch and the host
+	      self.addLink(host, br_mgmt, **linkopts )
+	      portNumber = self.port(host, br_mgmt)
+	      print portNumber
+
 
 # Utility function to dump relevant information of the emulation
 def dump():
@@ -283,15 +305,6 @@ def dump():
     # Get json topology
     json_topology = json_graph.node_link_data(topology)
     # Convert links
-
-    # for link in json_topology['links'] :
-    # 	#print link
-    # 	addr6 = ipaddress.ip_interface(link['lhs_ip'])
-    # 	print addr6.ip
-
-    # 	#addr6 = 
-    #	print str((ipaddress.ip_interface(link['lhs_ip'])).ip)
-
 
     json_topology['links'] = [
         {
@@ -375,7 +388,7 @@ def deploy(options):
   net.start( )
   # Build routing
   routing.routing(routes, topology, subnets_to_via, interfaces_to_ip)
-  # Iterate over the hosts
+  # Iterate over the mininet hosts (routers, servers, mgt)
   for host in net.hosts:
     # Get the default via, if exists
     default_via = host_to_default_via.get(host.name, None)
