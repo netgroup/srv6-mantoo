@@ -20,11 +20,14 @@ the password for root is root
 
 ### Configure the VM ###
 
-This will be used to login as root in all mininet VMs without password:
+- login as root in all mininet VMs without password
+- change the shell prompt in mininet to display the node name
 
     > cd /home/user/workspace/srv6-mantoo
+    > git pull
     > cd deployment
     > ./setup-passwordless-ssh-root-login.sh
+    > ./setup-root-bashrc-for-prompt-in-mininet.sh
 
 ### Run an example experiment ###
 
