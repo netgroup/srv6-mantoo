@@ -121,9 +121,9 @@ Now you can add SRv6 policies :
     > 5  2001:0:0:d::1 (2001:0:0:d::1)  0.056 ms  0.043 ms  0.043 ms
 
     # Dump the traffic
-    > tcpdump -nei hnyc-eth0
+    > tcpdump -nei hnyc-eth1
     > tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
-    > listening on hnyc-eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+    > listening on hnyc-eth1, link-type EN10MB (Ethernet), capture size 262144 bytes
     > 12:35:16.325624 be:6d:ef:83:18:1a > 6e:53:c7:8d:05:df, ethertype IPv6 (0x86dd), length 182: 2001:0:0:7::2 > 2001::1: srcrt (len=2, type=4, segleft=0[|srcrt]
     > 12:35:16.325774 6e:53:c7:8d:05:df > be:6d:ef:83:18:1a, ethertype IPv6 (0x86dd), length 118: 2001:0:0:d::1 > 2001:0:0:7::2: ICMP6, echo reply, seq 1, length 64
     > 12:35:17.349270 be:6d:ef:83:18:1a > 6e:53:c7:8d:05:df, ethertype IPv6 (0x86dd), length 182: 2001:0:0:7::2 > 2001::1: srcrt (len=2, type=4, segleft=0[|srcrt]
