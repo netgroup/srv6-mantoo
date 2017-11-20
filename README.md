@@ -4,7 +4,7 @@ Tools to setup an emulated SRv6 capapable IPv6 networks (based on mininet)
 
 ### Download the VM ###
 
-A Xubuntu 17.04 virtualbox VM can be downloaded using Vagrant. First, you have to install vagrant from https://www.vagrantup.com/ 
+A Xubuntu 17.10 (4.14 kernel) virtualbox VM can be downloaded using Vagrant. First, you have to install vagrant from https://www.vagrantup.com/ 
 then you can get your ready-to-go VM as follows: 
 
 - create a new folder, for example call it srv6
