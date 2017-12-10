@@ -18,16 +18,21 @@ the password for user is 1234
 
 the password for root is root
 
+if you have downloaded a previous version of the box and you want to update, you have to run:
+> vagrant box update
+
 ### Configure the VM ###
 
 - login as root in all mininet VMs without password
 - change the shell prompt in mininet to display the node name
 
-    > cd /home/user/workspace/srv6-mantoo
-    > git pull
-    > cd deployment
-    > ./setup-passwordless-ssh-root-login.sh
-    > ./setup-root-bashrc-for-prompt-in-mininet.sh
+```
+> cd /home/user/workspace/srv6-mantoo    
+> git pull
+> cd deployment
+> ./setup-passwordless-ssh-root-login.sh    
+> ./setup-root-bashrc-for-prompt-in-mininet.sh
+```
 
 ### Run an example experiment ###
 
