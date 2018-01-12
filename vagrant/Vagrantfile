@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
 
     # Every Vagrant development environment requires a box. You can search for
     # boxes at https://vagrantcloud.com/search.
-    oshi.vm.box = "salsano/test"
+    oshi.vm.box = "salsano/oshivm9"
     config.ssh.username = "user" 
     config.ssh.password = "1234" 
     oshi.vm.synced_folder ".", "/vagrant", disabled: true 
